@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>MAPX </title>
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<div class="wrapper"  data-ng-app="APIModule">
+	<div class="container" ng-controller="APIController">
+		<div class="box">
+			<img width="100" height="100" src="logo.jpg">
+			<p class="impact">
+			<h2 style="color: darkgreen;font-size: xx-large">Elpitiya Primary Collage</h2></p>
+		</div>
+		<h1 class="name"></h1>
+
+
+		<form class="form">
+			<input type="text" placeholder="Username" data-ng-model="UserName">
+            <input type="password" placeholder="Password" data-ng-model="Password">
+            <button type="submit" ng-click="login()">Login</button>
+		</form>
+	</div>
+	
+	<ul class="bg-bubbles">
+		<li></li>
+    <li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="js/site.js"></script>
+<script src="js/angular.js"></script>
+<script src="js/login_controller.js"></script>
+
+</body>
+</html>
