@@ -38,30 +38,8 @@ var xx = distance(6.292842, 80.164797,6.299497, 80.156833,'K')*1000;
 
 console.log(xx);
 
-const citymap = {
-  chicago: {
-    center: {
-      lat: 6.292842,  
-      lng: 80.164797
-    },
-    population: 500
-  },
-  newyork: {
-    center: {
-      lat: 6.292842,  
-      lng: 80.164797
-    },
-    population: 250 //distance(6.289834,80.161943,6.284257, 80.156364,'M')
-  },
-  sss: {
-    center: {
-      lat: 6.292842,  
-      lng: 80.164797
-    },
-    population: 750//distance(6.289834,80.161943,6.284257, 80.156364,'M')
-  } 
-};
 
+var cityCircle;
 function initMap() {
 
   let url = "http://maps.google.com/mapfiles/ms/icons/";
@@ -131,62 +109,78 @@ function initMap() {
     }); 
   }
 
+  var citymap =
+      {
+        1:  {
+            strokeColor: "#FF0000",
+            strokeOpacity: 1,
+            strokeWeight: 1,
+            clickable: true,
+            fillOpacity: 0,
+            map: map,
+            center: new google.maps.LatLng(6.292842, 80.164797),
+            radius: 250
+          },
+        2:  {
+          strokeColor: "#FF0000",
+          strokeOpacity: 1,
+          strokeWeight: 1,
+          clickable: true,
+          fillOpacity: 0,
+          map: map,
+          center: new google.maps.LatLng(6.292842, 80.164797),
+          radius: 500
+        },
+        3:  {
+          strokeColor: "#FF0000",
+          strokeOpacity: 1,
+          strokeWeight: 1,
+          clickable: true,
+          fillOpacity: 0,
+          map: map,
+          center: new google.maps.LatLng(6.292842, 80.164797),
+          radius: 750
+        },
+        4:  {
+          strokeColor: "#FF0000",
+          strokeOpacity: 1,
+          strokeWeight: 1,
+          clickable: true,
+          fillOpacity: 0,
+          map: map,
+          center: new google.maps.LatLng(6.292842, 80.164797),
+          radius: 1000
+        }
+    }
+  ;
+
+
+
   // Note: We scale the area of the circle based on the population.
 	var x = 2;
-  for (const city in citymap) {
-    // Add the circle for this city to the map.
-		x = x + 1;
-    var y = '#fcba0';
-    const cityCircle = new google.maps.Circle({
-      strokeColor: "#ff0400",
-      strokeOpacity: 0.9,
-      strokeWeight: 2,
-      fillColor: y.concat(x.toString()),
-      fillOpacity: 0.05,
-      map,
-      center: citymap[city].center,
-      radius: citymap[city].population
+    for (const city in citymap) {
+      // Add the circle for this city to the map.
+
+      //cityCircle = new google.maps.Circle(city);
+      console.log("xx",citymap[city]['1']);
     }
-    );
-    console.log("xx",citymap[city].population);
-  }
 
-  google.maps.event.addListener(map, 'click', function(event) {
-    alert("Latitude: " + event.latLng.lat() + " " + ", longitude: " + event.latLng.lng());
-    $('#Latitude').val(event.latLng.lat());
-    $('#longitude').val(event.latLng.lng());
+  google.maps.event.addListener(cityCircle, 'click', function(ev) {
 
-    var lat =  event.latLng.lat();   
-    var lon =  event.latLng.lng();  
-
-    var xx = distance(6.292842, 80.164797,lat, lon,'K')*1000;
-    console.log("lon>>>>>>",xx);
-
-    marker = new google.maps.Marker({
-      position: new google.maps.LatLng(lat, lon),
-      map: map,
-      label: {text: "Home", color: "blue",fontSize: "16px"},
-      icon: {
-        url:  url + "blue-dot.png"
-      }
-    }); 
-   
     const cityCircle = new google.maps.Circle({
-      strokeColor: "#FF0000",
-      strokeOpacity: 0.8,
-      strokeWeight: 2,
-      fillColor: y.concat(x.toString()),
-      fillOpacity: 0.05,
-      map,
-      center: {
-        lat: lat,   
-       lng: lon
-     },
-      radius: xx
-    }
+          strokeColor: "#FF0000",
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillOpacity: 0.05,
+          map,
+          center: {
+            lat: 6.289834,
+            lng: 80.164797
+          },
+          radius: 600
+        }
     );
   });
- 
   
  
 }
